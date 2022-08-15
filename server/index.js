@@ -1,8 +1,12 @@
-const express = require('express');
+import express from 'express';
+import http from 'http';
+import {GameSocket} from './GameSocket.js';
+
 const app = express();
 
-app.use(express.json());
+const server = http.createServer(app);
+new GameSocket(server)
 
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
